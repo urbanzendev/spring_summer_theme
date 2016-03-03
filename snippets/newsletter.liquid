@@ -7,7 +7,7 @@
         <input type="text" value="" name="LNAME" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
       {% endcomment %}
       <input type="email" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
-      <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}" class="action_button sign_up" name="subscribe" />
+      <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}" class="cta-button sign_up" name="subscribe" />
     </form>
   {% else %}    
     {% form 'customer' %}
@@ -23,7 +23,7 @@
        <input type="hidden" name="contact[first_name]" value="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
        <input type="hidden" name="contact[last_name]" value="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
        <input type="email" class="contact_email" name="contact[email]" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
-       <input type='submit' class="action_button sign_up" value="{{ 'general.newsletter_form.submit' | t }}" />
+       <input type='submit' class="cta-button" value="{{ 'general.newsletter_form.submit' | t }}" />
      {% endform %}
   {% endif %}
 </div>

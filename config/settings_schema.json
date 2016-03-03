@@ -763,6 +763,26 @@
             "group": "Sans-serif"
           },
           {
+            "value": "'Conv_HelveticaNeueLTStd-LTEx', 'Helvetica Neue Light Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Extended Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-Lt', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-Roman', 'Helvetica Neue Light Roman', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light Roman",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-ThEx', 'Helvetica Neue Thin Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Thin Extended",
+            "group": "Sans-serif"
+          },
+          {
             "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
             "label": "Lucida Grande",
             "group": "Sans-serif"
@@ -1178,6 +1198,26 @@
             "group": "Sans-serif"
           },
           {
+            "value": "'Conv_HelveticaNeueLTStd-LTEx', 'Helvetica Neue Light Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Extended Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-Lt', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-Roman', 'Helvetica Neue Light Roman', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light Roman",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-ThEx', 'Helvetica Neue Thin Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Thin Extended",
+            "group": "Sans-serif"
+          },
+          {
             "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
             "label": "Lucida Grande",
             "group": "Sans-serif"
@@ -1540,6 +1580,26 @@
           {
             "value": "'HelveticaNeue-Light', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
             "label": "Helvetica Neue",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-LTEx', 'Helvetica Neue Light Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Extended Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-Lt', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-Roman', 'Helvetica Neue Light Roman', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light Roman",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-ThEx', 'Helvetica Neue Thin Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Thin Extended",
             "group": "Sans-serif"
           },
           {
@@ -2069,6 +2129,26 @@
           {
             "value": "'HelveticaNeue-Light', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
             "label": "Helvetica Neue",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-LTEx', 'Helvetica Neue Light Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Extended Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-Lt', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-Roman', 'Helvetica Neue Light Roman', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light Roman",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Conv_HelveticaNeueLTStd-ThEx', 'Helvetica Neue Thin Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Thin Extended",
             "group": "Sans-serif"
           },
           {

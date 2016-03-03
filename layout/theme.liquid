@@ -198,11 +198,14 @@
                 {% else %}
                   {{ shop.name }}
                 {% endif %}
+				<h1 class="slogan">A philosophy of living by Donna Karan</h1>
               </a>
             </div>
 
             <div class="thirteen columns nav mobile_hidden">
               <ul class="menu right">
+				  <li><a href="">Donna's Voice</a></li>
+				  <li><a href="">Foundation</a></li>
                 {% if settings.show_multiple_currencies %}
                   <li class="currencies">
                     {% include 'currencies-switcher' %}
@@ -226,7 +229,7 @@
               <ul class="menu {{ settings.menu_alignment }}">
                 {% for link in linklists[settings.main_linklist].links %}
                   {% if linklists[link.handle] == empty %}
-                    <li><a href="{{ link.url }}" class="top-link {% if link.active %}active{% endif %}">{{ link.title }}</a></li>
+                    <li><a href="{{ link.url }}" class="p6 top-link {% if link.active %}active{% endif %}">{{ link.title }}</a></li>
                   {% else %}
 
                     {% comment %}
@@ -253,15 +256,17 @@
                             {% for link in linklists[link.handle].links %}
                               {% capture count %}{{ count }}*{% endcapture %}
                               <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                              {% if linklists[link.handle] != empty %}
+							  {% comment %}
+						      {% if linklists[link.handle] != empty %}
                                 {% for link in linklists[link.handle].links %}
                                   {% capture count %}{{ count }}*{% endcapture %}
                                   <li>
                                     <a class="sub-link" href="{{ link.url }}">{{ link.title }}</a>
                                   </li>
                                 {% endfor %}
-                              {% endif %}
 
+                              {% endif %}
+								{% endcomment %}
                               {% if count.size > column_threshold and split == false %}
                                 {% assign split = true %}
                                 </ul>
@@ -399,8 +404,6 @@
                 {% if settings.display_designed_by == true %}
                   {{ 'layout.general.designer_credits_html' | t }}
                 {% endif %}
-
-                {{ powered_by_link | split: '" ' | join: '?ref=out-of-the-sandbox" ' | split: '">' | join: '?ref=out-of-the-sandbox">' }}
               </p>
 
               {% if settings.display_payment_methods %}

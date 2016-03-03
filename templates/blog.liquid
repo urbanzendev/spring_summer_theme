@@ -99,8 +99,10 @@
         {% if settings.blog_tags %}
           <div class="blog_meta tags">
             {% for tag in article.tags %}
-              <span><a href="{{ shop.url }}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" title="{{ blog.title }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}">{{ tag }}</a></span> 
-            {% endfor %}
+				{% if tag != 'signature' and tag != 'hide post' %}
+					<span><a href="{{ shop.url }}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" title="{{ blog.title }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}">{{ tag }}</a></span> 
+            	{% endif %}
+			{% endfor %}
           </div>
         {% endif %}
 

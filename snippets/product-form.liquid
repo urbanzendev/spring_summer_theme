@@ -60,7 +60,7 @@
       {% endif %}
 
       {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
-      <button type="submit" name="add" class="action_button add_to_cart" data-label={{ add_to_cart_label | json }}><span class="text">{{ add_to_cart_label }}</span></button>
+      <button type="submit" name="add" class="cta-button" data-label={{ add_to_cart_label | json }}><span class="text">{{ add_to_cart_label }}</span></button>
     </div>  
   </form>
 

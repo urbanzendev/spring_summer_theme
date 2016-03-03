@@ -38,7 +38,9 @@
       {% if settings.blog_tags and settings.sidebar_enabled %}
         <div class="blog_meta tags {% if article.image and settings.slideshow_article_enabled %}right{% endif %}">
           {% for tag in article.tags %}
-            <span><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" title="{{ blog.title }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}">{{ tag }}</a></span> 
+		   {% if tag != 'signature'  and tag !='hide post' %}
+            <span><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" title="{{ blog.title }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}">{{ tag }}</a></span>
+			{% endif %}
           {% endfor %}
         </div>
       {% endif %}
@@ -51,14 +53,15 @@
       {% endunless %}
         
         {% if settings.blog_tags and settings.sidebar_enabled == false %}
-          <div class="blog_meta tags right">
+          <div class="p6 blog_meta tags right">
             {% for tag in article.tags %}
+					   {% if tag != 'signature' and tag != 'hide post' %}
               <span><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" title="{{ blog.title }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}">{{ tag }}</a></span> 
+			  			{% endif %}
             {% endfor %}
           </div>
         {% endif %}
-
-        <p class="blog_meta">
+  	  <div class="p5 blog_meta left">
           {% if settings.blog_author %}
             <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span>
           {% endif %}
@@ -78,7 +81,7 @@
               </span>
             {% endif %}
           {% endif %}
-        </p>
+       </div>
 
         {% if article.image and settings.slideshow_article_enabled == false %}
           <p>
@@ -237,7 +240,9 @@
               {% if settings.blog_tags %}
                 <div class="blog_meta tags">
                   {% for tag in a.tags %}
+				  		   {% if tag != 'signature' and tag != 'hide post' %}
                     <span><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" title="{{ blog.title | escape }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}">{{ tag }}</a></span> 
+							{% endif %}
                   {% endfor %}
                 </div>
               {% endif %}
