@@ -447,6 +447,11 @@
             "group": "Sans-serif"
           },
           {
+            "value": "'HelveticaNeue-Md', 'Helvetica Neue Medium', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Medium",
+            "group": "Sans-serif"
+          },
+          {
             "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
             "label": "Lucida Grande",
             "group": "Sans-serif"
@@ -760,6 +765,31 @@
           {
             "value": "'HelveticaNeue-Light', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
             "label": "Helvetica Neue",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeue-Md', 'Helvetica Neue Medium', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Medium",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-LtEx', 'Helvetica Neue Light Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Extended Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-Lt', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-Roman', 'Helvetica Neue Light Roman', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light Roman",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-ThEx', 'Helvetica Neue Thin Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Thin Extended",
             "group": "Sans-serif"
           },
           {
@@ -1178,6 +1208,31 @@
             "group": "Sans-serif"
           },
           {
+            "value": "'HelveticaNeue-Md', 'Helvetica Neue Medium', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Medium",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-LtEx', 'Helvetica Neue Light Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Extended Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-Lt', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-Roman', 'Helvetica Neue Light Roman', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light Roman",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-ThEx', 'Helvetica Neue Thin Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Thin Extended",
+            "group": "Sans-serif"
+          },
+          {
             "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
             "label": "Lucida Grande",
             "group": "Sans-serif"
@@ -1540,6 +1595,31 @@
           {
             "value": "'HelveticaNeue-Light', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
             "label": "Helvetica Neue",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeue-Md', 'Helvetica Neue Medium', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Medium",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-LtEx', 'Helvetica Neue Light Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Extended Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-Lt', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-Roman', 'Helvetica Neue Light Roman', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light Roman",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-ThEx', 'Helvetica Neue Thin Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Thin Extended",
             "group": "Sans-serif"
           },
           {
@@ -2069,6 +2149,31 @@
           {
             "value": "'HelveticaNeue-Light', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
             "label": "Helvetica Neue",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeue-Md', 'Helvetica Neue Medium', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Medium",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-LtEx', 'Helvetica Neue Light Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Extended Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-Lt', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-Roman', 'Helvetica Neue Light Roman', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Light Roman",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'HelveticaNeueLTStd-ThEx', 'Helvetica Neue Thin Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "label": "Helvetica Neue Thin Extended",
             "group": "Sans-serif"
           },
           {
@@ -3966,10 +4071,29 @@
         "max-height": 2048
       },
       {
+        "type": "select",
+        "id": "image_1_headline_position",
+        "label": "Headline Position",
+        "options": [
+          {
+            "value": "Left",
+            "label": "Left"
+          },
+          {
+            "value": "Right",
+            "label": "Right"
+          },
+          {
+            "value": "Center",
+            "label": "Center"
+          }
+        ],
+        "default": "Center"
+      },
+      {
         "type": "text",
-        "id": "image_1_height",
-        "label": "Section height (in pixels)",
-        "default": "650"
+        "id": "image_1_toptitle",
+        "label": "Top heading"
       },
       {
         "type": "text",
@@ -4009,6 +4133,31 @@
         "type": "text",
         "id": "image_1_link",
         "label": "Button link URL"
+      },
+      {
+        "type": "text",
+        "id": "image_1_button2_text",
+        "label": "Button 2 text"
+      },
+      {
+        "type": "text",
+        "id": "image_1_link2",
+        "label": "Button2 link URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "image_1_is_button",
+        "label": "Display Link as Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "image_1_is_button2",
+        "label": "Display Second Link as Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "image_1_display_hr",
+        "label": "Show line break"
       },
       {
         "type": "checkbox",
@@ -4097,10 +4246,29 @@
         "max-height": 2048
       },
       {
+        "type": "select",
+        "id": "image_2_headline_position",
+        "label": "Headline Position",
+        "options": [
+          {
+            "value": "Left",
+            "label": "Left"
+          },
+          {
+            "value": "Right",
+            "label": "Right"
+          },
+          {
+            "value": "Center",
+            "label": "Center"
+          }
+        ],
+        "default": "Center"
+      },
+      {
         "type": "text",
-        "id": "image_2_height",
-        "label": "Section height (in pixels)",
-        "default": "600"
+        "id": "image_2_toptitle",
+        "label": "Top heading"
       },
       {
         "type": "text",
@@ -4142,6 +4310,16 @@
         "label": "Button link URL"
       },
       {
+        "type": "checkbox",
+        "id": "image_2_is_button",
+        "label": "Display Link as Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "image_2_display_hr",
+        "label": "Show line break"
+      },
+      {
         "type": "header",
         "content": "Banner 3"
       },
@@ -4154,10 +4332,29 @@
         "max-height": 2048
       },
       {
+        "type": "select",
+        "id": "image_3_headline_position",
+        "label": "Headline Position",
+        "options": [
+          {
+            "value": "Left",
+            "label": "Left"
+          },
+          {
+            "value": "Right",
+            "label": "Right"
+          },
+          {
+            "value": "Center",
+            "label": "Center"
+          }
+        ],
+        "default": "Center"
+      },
+      {
         "type": "text",
-        "id": "image_3_height",
-        "label": "Section height (in pixels)",
-        "default": "600"
+        "id": "image_3_toptitle",
+        "label": "Top heading"
       },
       {
         "type": "text",
@@ -4197,6 +4394,16 @@
         "type": "text",
         "id": "image_3_link",
         "label": "Button link URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "image_3_is_button",
+        "label": "Display Link as Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "image_3_display_hr",
+        "label": "Show line break"
       },
       {
         "type": "header",

@@ -37,6 +37,8 @@
 
     <!-- Stylesheets for Parallax 2.4 -->
     {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
+	{% if template == 'cart' %} {{ 'checkout_cart.scss.css' | asset_url | stylesheet_tag }}{% endif %}
+	
     <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.png' | asset_url }}">
     <link rel="canonical" href="{{ canonical_url }}" />
 
@@ -46,6 +48,8 @@
     {% endif %}
 
     {{ 'app.js' | asset_url | script_tag }}
+	
+
     {% if settings.product_slideshow_animation == 'zoom' %}{{ "cloudzoom.js" | asset_url | script_tag }}{% endif %}
 
     <!--[if lte IE 8]>
@@ -54,6 +58,7 @@
     <![endif]-->
 
     {{ content_for_header }}
+
   </head>
   {% if template contains "index" %}
     {% assign feature_image = true %}
@@ -68,8 +73,9 @@
   {% else %}
     {% assign feature_image = false %}
   {% endif %}
-  <body class="{{ template | replace: '.', '-' | handle }} {% if feature_image %}feature_image{% endif %}">
-    <div id="content_wrapper">
+  <body class="{{ template | replace: '.', '-' | handle }} {% if feature_image %}feature_image{% endif %} {% if template contains "banner" %}feature_image{% endif %} ">
+    <div class="msgPopup"></div>
+	<div id="content_wrapper">
       {% if settings.promo_text != blank %}
         {% if template contains "index" and settings.promo_home_page %} 
           <div class="promo_banner">
@@ -81,17 +87,18 @@
           </div>
         {% endif %}
       {% endif %}
-      <div>
+	  
         <div id="header" class="mm-fixed-top">
-          <a href="#nav" class="icon-menu"><span>{{ 'layout.general.menu' | t }}</span></a>
+          <a href="#nav" class="fa fa-bars"></a>
           <a href="{{ shop.url }}" title="{{ shop.name }}" class="mobile_logo logo">
             {% if settings.use_logo %}
               <img src="{% if settings.use_logo_home and feature_image %}{{ 'logo_home.png' | asset_url }}{% else %}{{ 'logo.png' | asset_url }}{% endif %}" alt="{{ shop.name }}" data-src="{{ 'logo.png' | asset_url }}" {% if settings.use_logo_home %}data-src-home="{{ 'logo_home.png' | asset_url }}"{% endif %} />
+			  <h1 class="slogan center">A philosophy of living by Donna Karan</h1>
             {% else %}
               {{ shop.name }}
             {% endif %}
           </a>
-          <a href="#cart" class="icon-cart right"><span>{{ cart.item_count }}</span></a>
+          <a href="#cart" class="icon-cart fa fa-shopping-bag right"><span class="medium">{{ cart.item_count }}</span></a>
         </div>
 
         <div class="hidden">
@@ -99,18 +106,18 @@
             <ul>
               {% for link in linklists[settings.main_linklist].links %}
                 {% if linklists[link.handle] == empty %}
-                  <li {% if link.active %}class="Selected"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+                  <li {% if link.active %}class="Selected"{% endif %}><a class="{{ link.title }}" href="{{ link.url }}">{{ link.title }}</a></li>
                 {% else %}
-                  <li {% if link.active %}class="Selected"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a>
+                  <li {% if link.active %}class="Selected"{% endif %}><a class="{{ link.title }}" href="{{ link.url }}">{{ link.title }}</a>
                     <ul>
                       {% for link in linklists[link.handle].links %}
                         {% if linklists[link.handle] == empty %}
-                          <li {% if link.active %}class="Selected"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+                          <li {% if link.active %}class="Selected"{% endif %}><a class="{{ link.title }}" href="{{ link.url }}">{{ link.title }}</a></li>
                         {% else %}
-                        <li {% if link.active %}class="Selected"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a>
+                        <li {% if link.active %}class="Selected"{% endif %}><a class="{{ link.title }}" href="{{ link.url }}">{{ link.title }}</a>
                           <ul>
                             {% for link in linklists[link.handle].links %}
-                              <li {% if link.active %}class="Selected"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+                              <li {% if link.active %}class="Selected"{% endif %}><a class="{{ link.title }}" href="{{ link.url }}">{{ link.title }}</a></li>
                             {% endfor %}
                           </ul>
                         </li>
@@ -138,8 +145,10 @@
           </div>
 
           <form action="/checkout" method="post" id="cart">
+			  
             <ul data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" data-shop-name="{{ shop.name | escape }}">
-              <li class="mm-subtitle"><a class="continue ss-icon" href="#cart">&#x2421;</a></li>
+				<li class="success_message"><span></span></li>
+              <li class="mm-subtitle"><a class="continue fa fa-times" href="#cart"></a></li>
 
               {% if cart.item_count == 0 %}
                 <li class="empty_cart">{{ 'layout.general.empty_cart' | t }}</li>
@@ -180,16 +189,19 @@
                       </label>
                     </p>
                   {% endif %}
-
+ 				
+				 
                   <input type="submit" class="action_button right" value="{{ 'layout.general.checkout' | t }}" />
-                  <a href="javascript:void(0)" class="action_button edit_cart right">{{ 'layout.general.continue_shopping' | t }}</a>
+                  <a href="/cart" class="action_button edit_bag right">View Bag</a>
+  				
+				  
                 </li>
               {% endif %}
             </ul>
           </form>
         </div>
 
-        <div class="header {% if settings.fixed_header %}mm-fixed-top{% else %}is-absolute{% endif %} {% if feature_image %}is-absolute {% if settings.headline_animation != blank %}animated{% endif %}{% endif %} {% if template contains "index" and settings.headline_animation != blank %}fadeIn{% endif %} {% if settings.header_background %}header_bar{% elsif feature_image %}{% else %}header_bar{% endif %}">
+        <div class="header {% if settings.fixed_header %}mm-fixed-top{% endif %} {% if template contains "banner" %}is-absolute{% endif %} {% if feature_image %}is-absolute {% if settings.headline_animation != blank %}animated{% endif %}{% endif %} {% if template contains "index" and settings.headline_animation != blank %}fadeIn{% endif %} {% if settings.header_background %}header_bar{% elsif feature_image %}{% elsif template contains "banner" %}{% else %}header_bar{% endif %}">
           <div class="container">
             <div class="three columns logo">
               <a href="{{ shop.url }}" title="{{ shop.name }}">
@@ -198,6 +210,7 @@
                 {% else %}
                   {{ shop.name }}
                 {% endif %}
+				<h1 class="slogan">A philosophy of living by Donna Karan</h1>
               </a>
             </div>
 
@@ -215,18 +228,18 @@
                 {% endif %}
                 {% if settings.search_enabled %}
                   <li class="search">
-                    <a href="/search" title="{{ 'general.search.title' | t }}" class="icon-search" id="search-toggle"></a>
+                    <a href="/search" title="{{ 'general.search.title' | t }}" class="fa fa-search" id="search-toggle"></a>
                   </li>
                 {% endif %}
                 <li class="cart">
-                  <a href="#cart" class="icon-cart cart-button"><span>{{ cart.item_count }}</span></a>
+                  <a href="#cart" class="icon-cart fa fa-shopping-bag cart-button"><span class="medium">{{ cart.item_count }}</span></a>
                 </li>
               </ul>
 
               <ul class="menu {{ settings.menu_alignment }}">
                 {% for link in linklists[settings.main_linklist].links %}
                   {% if linklists[link.handle] == empty %}
-                    <li><a href="{{ link.url }}" class="top-link {% if link.active %}active{% endif %}">{{ link.title }}</a></li>
+                    <li><a href="{{ link.url }}" class="p6 top-link {% if link.active %}active{% endif %}">{{ link.title }}</a></li>
                   {% else %}
 
                     {% comment %}
@@ -244,24 +257,26 @@
                     {% assign column_threshold = settings.dropdown_column_links | minus: 0 %}
 
                     <li><a href="{{ link.url }}" class="sub-menu {% if link.active %}active{% endif %} {% for link in linklists[link.handle].links %}{% for l in linklists[link.handle].links %} {% if l.active %}active{% endif %}{% endfor %}{% if link.active %}active{% endif %}{% endfor %}">{{ link.title }}
-                      &nbsp;<span class="icon-down-arrow"></span></a>
-                      <div class="dropdown animated fadeIn {% if count.size > column_threshold %}dropdown-wide{% endif %}">
+                      &nbsp;<span class="fa fa-angle-down"></span></a>
+                      <div class="dropdown animated fadeIn {% if count.size > 40 %}dropdown-wide{% endif %}">
                         <div class="dropdown_links clearfix">
                           <ul>
                             {% assign count = 0 %}
                             {% assign split = false %}
                             {% for link in linklists[link.handle].links %}
                               {% capture count %}{{ count }}*{% endcapture %}
-                              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                              {% if linklists[link.handle] != empty %}
+                              <li class="{{link.title | handleize }}"><a href="{{ link.url }}">{{ link.title }}</a></li>
+							  {% comment %}
+						      {% if linklists[link.handle] != empty %}
                                 {% for link in linklists[link.handle].links %}
                                   {% capture count %}{{ count }}*{% endcapture %}
-                                  <li>
+                                  <li class="{{link.title | handleize}}">
                                     <a class="sub-link" href="{{ link.url }}">{{ link.title }}</a>
                                   </li>
                                 {% endfor %}
-                              {% endif %}
 
+                              {% endif %}
+								{% endcomment %}
                               {% if count.size > column_threshold and split == false %}
                                 {% assign split = true %}
                                 </ul>
@@ -280,8 +295,8 @@
         </div>
 
 
-        {% unless feature_image %}
-          <div class="container main content">
+        {% unless feature_image or template contains "banner" %}
+          <div class="container content">
         {% endunless %}
 
         {% if template contains 'list-collections' %}
@@ -299,68 +314,62 @@
                 <h6>{{ 'layout.general.social' | t }}</h6>
 
                 {% if settings.twitter_link != '' %}
-                  <a href="{{ settings.twitter_link }}" title="{{ shop.name }} on Twitter" class="ss-icon" rel="me" target="_blank">
-                    &#xF611;
+                  <a href="{{ settings.twitter_link }}" title="{{ shop.name }} on Twitter" class="fa fa-twitter" rel="me" target="_blank">
+                    
                   </a>
                 {% endif %}
 
                 {% if settings.facebook_link != '' %}
-                  <a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook" class="ss-icon" rel="me" target="_blank">
-                    &#xF610;
+                  <a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook" class="fa fa-facebook" rel="me" target="_blank">
                   </a>
                 {% endif %}
 
                 {% if settings.google_link != '' %}
-                  <a href="{{ settings.google_link }}" title="{{ shop.name }} on Google+" class="ss-icon" rel="publisher" target="_blank">
-                    &#xF613;
+                  <a href="{{ settings.google_link }}" title="{{ shop.name }} on Google+" class="fa fa-google" rel="publisher" target="_blank">
                   </a>
                 {% endif %}
 
                 {% if settings.youtube_link != '' %}
-                  <a href="{{ settings.youtube_link }}" title="{{ shop.name }} on YouTube" class="ss-icon" rel="me" target="_blank">
-                    &#xF630;
+                  <a href="{{ settings.youtube_link }}" title="{{ shop.name }} on YouTube" class="fa fa-youtube" rel="me" target="_blank">
+
                   </a>
                 {% endif %}
 
                 {% if settings.vimeo_link != '' %}
-                  <a href="{{ settings.vimeo_link }}" title="{{ shop.name }} on Vimeo" class="ss-icon" rel="me" target="_blank">
-                    &#xF631;
+                  <a href="{{ settings.vimeo_link }}" title="{{ shop.name }} on Vimeo" class="fa fa-vimeo" rel="me" target="_blank">
+
                   </a>
                 {% endif %}
 
                 {% if settings.pinterest_link != '' %}
-                  <a href="{{ settings.pinterest_link }}" title="{{ shop.name }} on Pinterest" class="ss-icon" rel="me" target="_blank">
-                    &#xF650;
+                  <a href="{{ settings.pinterest_link }}" title="{{ shop.name }} on Pinterest" class="fa fa-pinterest" rel="me" target="_blank">
+
                   </a>
                 {% endif %}
 
                 {% if settings.tumblr_link != '' %}
-                  <a href="{{ settings.tumblr_link }}" title="{{ shop.name }} on Tumblr" class="ss-icon" rel="me" target="_blank">
-                    &#xF620;
+                  <a href="{{ settings.tumblr_link }}" title="{{ shop.name }} on Tumblr" class="fa fa-tumblr" rel="me" target="_blank">
                   </a>
                 {% endif %}
 
                 {% if settings.instagram_link != '' %}
-                  <a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram" class="ss-icon" rel="me" target="_blank">
-                    &#xF641;
+                  <a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram" class="fa fa-instagram" rel="me" target="_blank">
                   </a>
                 {% endif %}
 
                 {% if settings.linkedin_link != '' %}
-                  <a href="{{ settings.linkedin_link }}" title="{{ shop.name }} on LinkedIn" class="ss-icon" rel="me" target="_blank">
-                    &#xF612;
+                  <a href="{{ settings.linkedin_link }}" title="{{ shop.name }} on LinkedIn" class="fa fa-linkedin" rel="me" target="_blank">
+
                   </a>
                 {% endif %}
 
                 {% if settings.flickr_link != '' %}
-                  <a href="{{ settings.flickr_link }}" title="{{ shop.name }} on Flickr" class="ss-icon" rel="me" target="_blank">
-                    &#xF640;
+                  <a href="{{ settings.flickr_link }}" title="{{ shop.name }} on Flickr" class="fa fa-flickr" rel="me" target="_blank">
                   </a>
                 {% endif %}
 
                 {% if settings.email_link != '' %}
-                  <a href="mailto:{{ settings.email_link }}" title="Email {{ shop.name }}" class="ss-icon" target="_blank">
-                    &#x2709;
+                  <a href="mailto:{{ settings.email_link }}" title="Email {{ shop.name }}" class="fa fa-email" target="_blank">
                   </a>
                 {% endif %}
               {% endif %}
@@ -394,13 +403,11 @@
               </p>
 
               <p class="credits">
-                &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: '/' }}.
+                &copy; {{ "now" | date: "%Y" }} {{ shop.name }}.
                 {{ settings.copyright_text }}<br />
                 {% if settings.display_designed_by == true %}
                   {{ 'layout.general.designer_credits_html' | t }}
                 {% endif %}
-
-                {{ powered_by_link | split: '" ' | join: '?ref=out-of-the-sandbox" ' | split: '">' | join: '?ref=out-of-the-sandbox">' }}
               </p>
 
               {% if settings.display_payment_methods %}
@@ -417,18 +424,18 @@
         <div id="search" class="animated">
           <div class="container">
             <div class="ten columns offset-by-three center">
-              <form action="/search">
+              <form class="search-form" action="/search">
                 {% if settings.search_option != 'everything' %}
                   <input type="hidden" name="type" value="product" />
                 {% endif %}
-                <div class="search-close ss-icon">&#x2421;</div>
-                <span class="icon-search search-submit"></span>
+                <div class="search-close fa fa-times"></div>
+                <span class="icon-search fa fa-search search-submit"></span>
                 <input type="text" name="q" placeholder="{{ 'general.search.placeholder_with_shop_name' | t: shop_name: shop.name }}" value="{% if search and search.results.first.price %}{{ search.terms }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
               </form>
             </div>
           </div>
         </div>
-      </div>
+      
     </div>
     {% if template contains "product" and settings.size_chart != blank %}
       <div id="size-chart">
