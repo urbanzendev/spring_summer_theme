@@ -1,0 +1,65 @@
+</div>
+<div class="fullpage-wrapper" id="fullpage">
+	<div class="section text-center" id="landing" >
+		<div class="tableCell center">
+			<div class="container">
+				<div class="one-half column">
+					<h4>Connecting The Dots Between</h4>
+					<h1>Philanthropy + Commerce</h1>
+					<hr class="text-center hr--medium" />
+					<h3>"I have spent decades dressing people,<br/> now I want to address them"<br/><strong>Donna Karan</strong></h3>
+				</div>
+				 <a href="#pagecontent" class="scroll-arrow animated fadeInDown"></a>
+			</div>
+			<div class="bottom-content text-center">
+				<div class="container">
+					<div class="one-half">
+						<h2 class="dark">Philosophy of Living</h2>
+						<button class="cta-button"><span>Discover Our Story</span></button>
+					</div><div class="one-half">
+						<h2 class="dark">Modern Souls</h2>
+						<button class="cta-button" href=""><span>Shop The Collection</span></button>
+					</div>
+				</div>
+			</div>
+			<div class="bottom-content-bg"></div>
+		</div>
+		
+	</div>
+	
+	<div class="section text-center" id="gif">
+		<a name="pagecontent" id="pagecontent"></a>
+		
+	<div class="hero-caption">
+		<div class="">
+			<h5>Philosophy of Living</h5>
+			<h2>Calm In The Chaos</h2>
+			<hr class="text-center hr--medium">
+		</div>
+	</div>
+	<div class="video-cover"></div>
+</div>
+<div class="section">
+	<div class=" one-half column push--large--one-quarter">
+		<h5>Words from our Founder</h5>
+		<h2>Donna's Voice</h2>
+		<div class="">
+			{% for article in blogs.donnas-voice.articles limit:4 %}
+			{% if forloop.first == true %}
+			<div class="">
+				<a href="{{ article.url }}" name="{{article.title}}"><img src="{{ article.image.src | img_url: 'grande' }}" alt="{{article.title}}" /></a>
+				<h3><a href="{{ article.url }}" name="{{article.title}}">{{ article.title }}</a></h3>
+				<p>{{article.excerpt}}</p>
+			</div>
+		</div>
+		<div class="">
+			{% else %}
+			<div class=" large--one-third">
+				<a href="{{ article.url }}" name="{{article.title}}"><img src="{{ article.image.src | img_url: 'medium' }}" alt="{{article.title}}" /></a>
+				<h6><a href="{{ article.url }}">{{ article.title }}</a></h6>
+			</div>
+			{% endif %}{% endfor %}
+		</div>
+	</div>
+</div>
+</div>
