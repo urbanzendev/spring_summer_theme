@@ -1,15 +1,16 @@
-<div class="mobile_hidden sidebar four columns">
+<div class="sidebar four columns">
   {% if settings.collection_top_sidebar_page != blank %}
     <h4>{{ pages[settings.collection_top_sidebar_page].title }}</h4>
     {{ pages[settings.collection_top_sidebar_page].content }}
   {% endif %}
 
   {% if settings.collection_sidebar_linklist != blank %}
-   <!-- <h4 class="toggle"><b>Menu</b><span>+</span>--> <!--{{ linklists[settings.collection_sidebar_linklist].title }}--><!--</h4>-->
+    <h4 class="toggle"><span>+</span>{{ linklists[settings.collection_sidebar_linklist].title }}</h4>
     <ul class="blog_list toggle_list">
       {% for link in linklists[settings.collection_sidebar_linklist].links %}
         <li>
-          <!--<a {% if link.active %}class="active"{% endif %} href="{{ link.url }}" title="{{ link.title | escape }}">{{ link.title }}</a>-->         
+          <a {% if link.active %}class="active"{% endif %} href="{{ link.url }}" title="{{ link.title | escape }}">{{ link.title }}</a>
+          
           {% if linklists[link.handle] != empty %}
             {% assign display_sublinks = false %}
           
@@ -21,28 +22,10 @@
 
             {% if display_sublinks or link.active %}
               <ul>
-              {% for link in linklists[link.handle].links%}
-			  
+              {% for link in linklists[link.handle].links %}
                 <li>
-                  <a class="h5" {% if link.active %}class="active"{% endif %} href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
-	              <ul>
-					 {% if link.active == true %}
-	              {% for link in linklists[link.handle].links  %}
-	                <li>
-	                  <a class="p3" {% if link.active %}class="active"{% endif %} href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
-		              <ul>
-		              {% for link in linklists[link.handle].links  %}
-		                <li>
-		                  <a class="p3" {% if link.active %}class="active"{% endif %} href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
-		                </li>
-		              {% endfor %}
-		              </ul>
-	                </li>
-	              {% endfor %}
-				  {% endif %}
-	              </ul>
+                  <a {% if link.active %}class="active"{% endif %} href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
                 </li>
-				
               {% endfor %}
               </ul>
             {% endif %}

@@ -3,11 +3,11 @@
 {% assign collection_group = products | map: 'id' %}
 {% assign collection_group_thumb = collection_group | append : 'thumb' %}
 {% assign collection_group_mobile = collection_group | append : 'mobile' %}
-{% comment %}
+
 {% capture new_row %}
     <br class="clear product_clear" />
 {% endcapture %}
-{% endcomment %}
+
 <div itemtype="http://schema.org/ItemList" class="products">
   {% for product in products limit: limit %}
     {% if product.id == skip_product.id or skip == true %}

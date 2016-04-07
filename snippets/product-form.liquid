@@ -27,7 +27,7 @@
       </div>
     {% elsif product.options.size == 1 and (product.variants.size > 1 or product.options[0] != "Title") %}
       <div class="select">
-        <label class="h5">{{ product.options[0] }}</label>
+        <label>{{ product.options[0] }}</label>
         <select id="product-select-{{ product.id }}{{ product-form }}" name="id">
           {% for variant in product.variants %}
             <option {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }}</option>
@@ -39,18 +39,6 @@
     {% endif %}
 
     {% if settings.product_form_style == "swatches" and (product.variants.size > 1 or product.options[0] != "Title") %}
-    
-  
-			  {% if product.tags contains 'no-size-guide' %}
-			  {% else %}
-				{% if settings.size_chart != blank %}
-			      <a href="#size-chart" class="p5 lightbox size_chart">{{ 'products.product.size_chart' | t }} </a>
-			    {% endif %}
-	  		{% endif %}
-
-	
-	
-
       <div class="swatch_options">
         {% for option in product.options %}
           {% include 'product-swatch' with option %}
@@ -72,7 +60,7 @@
       {% endif %}
 
       {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
-      <button type="submit" name="add" class="action_button add_to_cart add-to-bag cta-button" data-label={{ add_to_cart_label | json }}><span class="text">{{ add_to_cart_label }}</span></button>
+      <button type="submit" name="add" class="action_button add_to_cart" data-label={{ add_to_cart_label | json }}><span class="text">{{ add_to_cart_label }}</span></button>
     </div>  
   </form>
 
