@@ -1,3 +1,5 @@
+  {% capture permalinkURL %}{{ shop.url }}{{ article.url }}{% endcapture %}
+  {% capture shareTitle %}{{ article.title | url_param_escape }}{% endcapture %}
 {% if article.image and settings.slideshow_article_enabled %}
   <div id="slide-article">
     <div class="bcg"
@@ -22,7 +24,7 @@
 {% paginate article.comments by 100 %}
   
   <div class="twelve columns {% if settings.sidebar_enabled == false %}offset-by-two{% endif %}">
-    <div class="section clearfix">
+    <div class="section border-separate">
     {% if settings.blog_breadcrumb %}
         <div class="clearfix breadcrumb">
           <div class="breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
@@ -51,7 +53,7 @@
           <div class="feature_divider"></div>
         {% endunless %}
       {% endunless %}
-        
+       
         {% if settings.blog_tags and settings.sidebar_enabled == false %}
           <div class="p6 blog_meta tags right">
             {% for tag in article.tags %}
@@ -61,7 +63,8 @@
             {% endfor %}
           </div>
         {% endif %}
-  	  <div class="p5 blog_meta left">
+	
+  	  <div class="p5 blog_meta">
           {% if settings.blog_author %}
             <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span>
           {% endif %}
@@ -90,14 +93,26 @@
         {% endif %}
 
         {{ article.content }}
-
+		{% if article.tags contains 'signature' %}
+		<div class="signature text-center">
+			<span>Love,</span><br/>
+          <img class="text-center" src="{{ 'dk-signature-blk.png' | asset_url }}" width="100" alt="Donna Karan" />
+        </div>
+		{% endif %}
         <span class="clear"></span>
-      
-        {% if settings.display_social_buttons %}
-          <div class="share-button"></div>
-        {% endif %}
+      	<br>
+	  {% comment %}
+       {% if settings.display_social_buttons %}
+         <div class="share-button"></div>
+       {% endif %}
+	
+       <a target="_blank" href="http://pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media={{ product.featured_image | product_img_url: '1024x1024' }}&amp;description={{ shareTitle }}" class="share-btn right">
+         <span class="icon entypo-pinterest" aria-hidden="true"></span>
+         <span class="share-title">Pin it</span>
+       </a>
+	   
         <br class="clear" />
-
+{% endcomment %}
         {% if settings.blog_author %}
           <br class="clear" />
           <hr />
@@ -217,10 +232,10 @@
     {% if settings.blog_additional_articles and blog.articles_count > 1 %}
       <div class="section clearfix">
         <hr />
-        <h3>{{ 'blogs.article.additional_articles' | t: title: blog.title }}</h3>
+        <h3 class="center">{{ 'blogs.article.additional_articles' | t: title: blog.title }}</h3>
 
         {% assign article_found = false %}
-        {% for a in blog.articles limit: 4 %}
+        {% for a in blog.articles limit: 5 %}
           {% assign skip_article = false %}
           {% if article_found == false and forloop.last %}
             {% assign skip_article = true %}
@@ -230,13 +245,13 @@
             {% assign skip_article = true %}
           {% endif %}
           {% unless skip_article %}
-            <div class="four columns {% cycle 'alpha', ' ', 'omega' %} article">
+            <div class="four columns article">
               {% if a.image %}
                 <a href="{{ a.url }}" title="{{ a.title | escape }}">
                   <img src="{{ a.image | img_url: 'grande' }}" alt="{{ a.title | escape }}" />
                 </a>
               {% endif %}
-
+			  {% comment %}
               {% if settings.blog_tags %}
                 <div class="blog_meta tags">
                   {% for tag in a.tags %}
@@ -246,17 +261,18 @@
                   {% endfor %}
                 </div>
               {% endif %}
+			  {% endcomment %}
 
               <h5 class="sub_title">
                 <a href="{{ a.url }}" title="{{ a.title | escape }}">{{ a.title }}</a>
               </h5>
-              <p class="blog_meta">
+              <p class="p5 blog_meta">
                 {% if settings.blog_author %}
                   <span>{{ 'blogs.article.by_author' | t: author: a.author }}</span>
                 {% endif %}
 
                 {% if settings.blog_date %}
-                  <span>{{ a.published_at | date: format: "month_day_year" }}</span>
+				{{ a.published_at | date: format: "month_day_year" }}
                 {% endif %}
                 
                 {% if settings.disqus_enabled %}
@@ -269,7 +285,7 @@
                   </span>
                 {% endif %}
               </p>
-
+			  {% comment %}
               {% if a.excerpt != blank %}
                   <div class="excerpt">{{ a.excerpt }}</div>              
               {% endif %}   
@@ -277,7 +293,8 @@
                 <p>
                   <a href="{{ a.url }}" title="{{ a.title | escape }}">{{ 'blogs.general.continue_reading_html' | t }} <span class="icon-right-arrow"></span></a>
                 </p>
-              {% endif %}           
+              {% endif %}
+			  {% endcomment %}
             </div>
           {% endunless %}
         {% endfor %}
@@ -296,4 +313,4 @@
       });
     // ]]>
   </script>
-{% endpaginate %}  
+{% endpaginate %}

@@ -2,6 +2,13 @@
 	<a id="newsletter" href="#target"></a>
 	<span style="display: none;">
 	 <span id="target">
+		 <div class="popup-text left"><h1 class="light">LET'S CONNECT<br>COLLABORATE & COMMUNICATE</h1><p class="p2 light">Sign up for our newsletter to receive special updates and insider offers.</p></div>
+		 <div class="mobile_hidden">
+		 	<img width="100%" src="{{ 'Email_Signup_Background.jpg' | asset_url }}" />
+	 	</div>
+		<div class="desktop_hidden">
+			<img width="100%" src="{{ 'Email_Signup_Background_M.jpg' | asset_url }}" />
+		</div>
     {% if settings.newsletter_popup_form %}
       {% include 'newsletter' %}
     {% endif %}

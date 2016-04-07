@@ -1,5 +1,8 @@
+  {% capture permalinkURL %}{{ shop.url }}{{ product.url }}{% endcapture %}
+  {% capture shareTitle %}{{ product.title | url_param_escape }}{% endcapture %}
 <div class="sixteen columns">
   <div class="clearfix breadcrumb">
+	  <!--
     <div class="nav_arrows">
       {% if collection.previous_product %}
         <a href="{{ collection.previous_product }}" title="{{ 'products.general.previous_product_html' | t }}" class="ss-icon prev">&#x25C5;</a>
@@ -9,7 +12,7 @@
         <a href="{{collection.next_product}}" title="{{ 'products.general.next_product_html' | t }}" class="ss-icon next">&#x25BB;</a>
       {% endif %}
     </div>
-
+	-->
     {% if settings.product_breadcrumb %}
       <div class="breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
         <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item"><span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span></a></span> 
@@ -40,29 +43,29 @@
 	<div class="section product_section clearfix" itemscope itemtype="http://schema.org/Product">
 	             
     <div class="{% if settings.product_sidebar %}seven{% else %}nine{% endif %} columns {% if product-images == blank %}{% if settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}{% endif %} {% if settings.product_images_position == 'right' %}mobile_only{% endif %}">
-      {% include 'product-images' %}
+      {% include 'product-images-carousel' %}
+	  
     </div>
 
     <div class="{% if settings.product_sidebar %}five{% else %}seven{% endif %} columns {% if settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
       
       {% assign collection_handles = product.collections | map: 'handle' %}
       {% assign variant = product.selected_or_first_available_variant %}
-      <h1 class="product_name" itemprop="name">{{ product.title }}</h1>
+      <h1 class="dark product_name" itemprop="name">{{ product.title }}</h1>
       {% if settings.display_vendor %}
-        <p class="vendor">
-          <span itemprop="brand">{{ product.vendor | link_to_vendor }}</span>
-        </p>
-      {% endif %}
+	  	{% if product.vendor == "Urban Zen" %}
+		{% else %}
+        	<p class="p2 vendor">	
+          	  <span itemprop="brand"><a href="{% if product.tags contains {{product.vendor}} %}/collections/{% endif %}{% if product.tags contains 'Haiti Artisans' %}haiti-artisans/{% endif %}{{product.vendor | handleize }}" name="{{product.vendor}}">{{ product.vendor}}</a></span>
+			  <span></span>
+        	</p>
+      	{% endif %}
+	  {% endif %}
+	  
 
-      {% if variant.sku != blank and settings.display_sku %}
-        <p class="sku">
-          <span itemprop="sku">{{ variant.sku }}</span>
-        </p>
-      {% endif %}
+     
       
-      {% if settings.size_chart != blank %}
-        <a href="#size-chart" class="lightbox size_chart">{{ 'products.product.size_chart' | t }} <span class="icon-right-arrow"></span></a>
-      {% endif %}
+     
 
       {% unless collection_handles contains 'coming-soon' %}
         <p class="modal_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -72,7 +75,7 @@
           <meta itemprop="itemCondition" content="New" />
 
           <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
-          <span itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+          <p class="p2" itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
             <span class="current_price">
               {% if variant.available %}
                 {% if variant.price > 0 %} 
@@ -82,7 +85,7 @@
                 {% endif %}
               {% endif %}
             </span>
-          </span>
+          </p>
           <span class="was_price">
           {% if variant.price < variant.compare_at_price and variant.available %}
             {{ variant.compare_at_price | money }}
@@ -118,9 +121,28 @@
       {% endif %}
      
       <div class="meta">
+		  {% comment %}
         {% if settings.display_social_buttons %}
           <div class="share-button"></div>
         {% endif %}
+		{% endcomment %}
+		{% comment %}
+   	  	{% for tag in product.tags  %}
+   	 		{% assign product_tags_string = tag | join ' ' %}
+   			{% if product_tags_string contains 'style-' %}
+               <p class="p5 style-ref">STYLE NUMBER: {{tag | remove:'style-'}}</p>
+          	{% endif %}
+		{% endfor %}
+		{% endcomment %}
+	      {% if variant.sku != blank and settings.display_sku %}
+			<p class="p6 style-ref sku">SKU:
+	          <span itemprop="sku">{{ variant.sku }}</span>
+	        </p>
+	      {% endif %}
+        <a target="_blank" href="http://pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media={{ product.featured_image | product_img_url: '1024x1024' }}&amp;description={{ shareTitle }}" class="share-btn right">
+          <span class="icon entypo-pinterest" aria-hidden="true"></span>
+          <span class="share-title">Pin it</span>
+        </a>
         
         {% if settings.display_collections %}
           <p>
@@ -195,13 +217,14 @@
     {% if col and collections[col].all_products_count > 0 %}
       {% if collections[col].all_products_count != 1 or collections[col].products.first.id != product.id %}
         <br class="clear" />
+		 <div class="desktop_hidden feature_divider"></div>
         <h4 class="title center">{{ 'products.product.related_items' | t }}</h4>
-        <div class="feature_divider"></div>
+        <div class="mobile_hidden feature_divider"></div>
 
         {% assign skip_product = product %}
         {% assign products = collections[col].products %}
-        {% assign products_per_row = settings.products_per_row %}
-        {% include 'product-loop' with settings.product_sidebar %}
+        {% assign products_per_row == "4" %}
+        {% include 'related-products' %}
       {% endif %}
     {% endif %}
   {% endif %}

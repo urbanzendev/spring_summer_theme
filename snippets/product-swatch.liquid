@@ -20,8 +20,12 @@
   {% endif %}
 {% endfor %}
 
+{% for option in product.selected_or_first_available_variant.options %}
+  {% assign selected_color = option | handle %}
+{% endfor %}
+
 <div class="swatch clearfix" data-option-index="{{ option_index }}">
-  <div class="option_title">{{ swatch }}</div>
+  <p class="p6 option_title">{{ swatch }}</p>
   {% assign values = '' %}
   {% for variant in product.variants %}
     {% assign value = variant.options[option_index] %}
@@ -30,8 +34,16 @@
       {% assign values = values | append: ',' | append: value %} 
       {% assign values = values | split: ',' %}
       
-      <input id="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} />
-      <div data-value="{{ value | escape }}" class="swatch-element {% if is_color %}color {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}">
+      {% assign valueHandle = value | handle %}
+      
+      {% if valueHandle == selected_color %}
+        {% assign is_selected = true %}
+      {% else %}
+        {% assign is_selected = false %}
+      {% endif %} 
+
+      <input id="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}" {% if is_selected  %}checked{% else %}unchecked{% endif %} />
+      <div data-value="{{ value | escape | downcase | handleize  }}" class="p5 swatch-element {{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}">
         {% if is_color %}
           <div class="tooltip">{{ value }}</div>
         {% endif %}
@@ -54,3 +66,14 @@
     {% endif %}
   {% endfor %}
 </div>
+
+<script type="text/javascript">
+  $('ul.slides li.thumbnail-curated-image').click(function(event) {
+    if ( $(this).hasClass('thumbnail-curated-image') ) {
+      event.preventDefault();
+      console.log('flex curated')
+      var curatedImageIndex = $('li[data-title="curated-image"]').index();   
+      $('.product_slider').data("flexslider").flexslider(curatedImageIndex);
+    } 
+  });
+</script>

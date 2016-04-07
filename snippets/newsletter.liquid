@@ -1,13 +1,11 @@
 <div class="newsletter {% if newsletter == 'center' %}center{% endif %}">
-  <p class="message"></p>
   {% if settings.mailchimp_link != blank %}
-    <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" class="contact-form" target="_blank">
-      {% comment %}
-        <input type="text" value="" name="FNAME" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}">
-        <input type="text" value="" name="LNAME" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
-      {% endcomment %}
-      <input type="email" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
-      <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}" class="cta-button sign_up" name="subscribe" />
+    <form name="mc-embedded-subscribe-form" class="contact-form" >
+	  <input style="display: none;" checked="checked" type="checkbox" value="32" name="group[4173][32]" id="mce-group[4173]-4173-0"/>
+    	<p class="msgPopup"></p>
+      <input  id="emailInput" type="email" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
+	    
+      <button type="submit" class="cta-button sign_up" >Sign Up</button>
     </form>
   {% else %}    
     {% form 'customer' %}
